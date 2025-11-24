@@ -15,3 +15,5 @@ export const authReducer = createSlice({
 });
 
 export const { changeToken } = authReducer.actions;
+
+export default authReducer.reducer;
