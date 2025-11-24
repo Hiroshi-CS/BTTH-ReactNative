@@ -57,7 +57,12 @@ const HomeStack = () => {
 };
 
 const BottomTabsContent = () => {
-  const { colors } = useSettings();
+  const { colors, loading } = useSettings();
+
+  // Đợi settings load xong trước khi render
+  if (loading) {
+    return null;
+  }
 
   return (
     <Bottom.Navigator

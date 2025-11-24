@@ -30,8 +30,10 @@ export const SettingsProvider = ({ children }) => {
 
       if (result) {
         // ✅ Convert rõ ràng từ SQLite INTEGER (0/1) sang Boolean
-        setDarkMode(result.dark_mode === 1);
-        setFontSize(Number(result.font_size));
+        // Xử lý cả trường hợp SQLite trả về string hoặc number
+        const darkModeValue = result.dark_mode;
+        setDarkMode(darkModeValue === 1 || darkModeValue === "1");
+        setFontSize(Number(result.font_size) || 16);
       }
       setLoading(false);
     } catch (error) {
