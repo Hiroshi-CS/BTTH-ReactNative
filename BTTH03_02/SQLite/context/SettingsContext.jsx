@@ -29,8 +29,8 @@ export const SettingsProvider = ({ children }) => {
       );
 
       if (result) {
-        // ✅ Convert rõ ràng
-        setDarkMode(Boolean(Number(result.dark_mode)));
+        // ✅ Convert rõ ràng từ SQLite INTEGER (0/1) sang Boolean
+        setDarkMode(result.dark_mode === 1);
         setFontSize(Number(result.font_size));
       }
       setLoading(false);
