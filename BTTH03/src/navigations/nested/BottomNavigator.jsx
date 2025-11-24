@@ -1,8 +1,8 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import HomeScreen from "../screens/HomeScreen";
-import CategoryScreen from "../screens/CategoryScreen";
-import FavoriteScreen from "../screens/FavoriteScreen";
-import ProfileScreen from "../screens/ProfileScreen";
+import HomeScreen from "../../screens/HomeScreen";
+import CategoryScreen from "../../screens/CategoryScreen";
+import FavoriteScreen from "../../screens/FavoriteScreen";
+import ProfileScreen from "../../screens/ProfileScreen";
 
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -24,27 +24,23 @@ const BottomNavigator = () => {
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: AppColors.primary,
-        tabBarInactiveTintColor: AppColors.gray500,
-        tabBarStyle: {
-          backgroundColor: AppColors.white,
-          borderTopWidth: 1,
-          borderTopColor: AppColors.border,
-          height: 60,
-          paddingBottom: 8,
-          paddingTop: 8,
-          marginBottom: insets.bottom,
-        },
-        tabBarLabelStyle: {
-          fontSize: 12,
-          fontWeight: "500",
-        },
       }}
     >
       <Bottom.Screen
         name="Home"
         component={HomeScreen}
-        options={{
+        options={({ navigation }) => ({
+          headerShown: true,
           tabBarLabel: "Trang chủ",
+          headerLeft: () => (
+            <Ionicons
+              name="menu"
+              size={28}
+              onPress={() =>
+                navigation.getParent("DrawerNavigator").openDrawer()
+              }
+            />
+          ),
           tabBarIcon: ({ focused, color, size }) => (
             <Ionicons
               name={focused ? "home" : "home-outline"}
@@ -52,12 +48,14 @@ const BottomNavigator = () => {
               color={color}
             />
           ),
-        }}
+        })}
       />
+
       <Bottom.Screen
         name="Category"
         component={CategoryScreen}
         options={{
+          headerShown: true,
           tabBarLabel: "Danh mục",
           tabBarIcon: ({ focused, color, size }) => (
             <Ionicons
@@ -68,10 +66,13 @@ const BottomNavigator = () => {
           ),
         }}
       />
+
       <Bottom.Screen
         name="Favorite"
         component={FavoriteScreen}
         options={{
+          headerShown: true,
+          title: "Yêu thích",
           tabBarLabel: "Yêu thích",
           tabBarBadge: 3,
           tabBarIcon: ({ focused, color, size }) => (
@@ -88,6 +89,8 @@ const BottomNavigator = () => {
         name="Profile"
         component={ProfileScreen}
         options={{
+          headerShown: true,
+          title: "Cá nhân",
           tabBarLabel: "Cá nhân",
           tabBarIcon: ({ focused, color, size }) => (
             <Ionicons

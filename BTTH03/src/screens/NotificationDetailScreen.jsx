@@ -1,15 +1,15 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 
-const FavoriteScreen = () => {
+const NotificationDetailScreen = () => {
   return (
     <View style={styles.container}>
-      <Text>FavoriteScreen</Text>
+      <Text>Notification Detail Screen</Text>
     </View>
   );
 };
 
-export default FavoriteScreen;
+export default NotificationDetailScreen;
 
 const styles = StyleSheet.create({
   container: {

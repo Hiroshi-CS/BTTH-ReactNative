@@ -1,15 +1,15 @@
-import { StyleSheet, Text, View } from "react-native";
+import { Button, StyleSheet, Text, View } from "react-native";
 import React from "react";
 
-const FavoriteScreen = () => {
+const Category2Screen = () => {
   return (
     <View style={styles.container}>
-      <Text>FavoriteScreen</Text>
+      <Text>Category 2 Screen</Text>
     </View>
   );
 };
 
-export default FavoriteScreen;
+export default Category2Screen;
 
 const styles = StyleSheet.create({
   container: {
